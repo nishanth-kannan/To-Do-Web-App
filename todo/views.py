@@ -4,6 +4,8 @@ from .forms import ListForm
 from django.contrib import messages
 
 # Create your views here.
+
+#takes the input of tasks and returns them, if any
 def index(request):
     if request.method == "POST":
         form = ListForm(request.POST or None)
@@ -16,24 +18,28 @@ def index(request):
         all_items = List.objects.all
         return render(request, "todo/index.html", {'all_items': all_items})
 
+#delete a task
 def delete(request, list_id):
     item = List.objects.get(pk= list_id)
     item.delete()
     messages.success(request, ("Task has been removed from list!"))
     return redirect('index')
-        
+
+#marking task as done
 def cross_off(request, list_id):
     item = List.objects.get(pk= list_id)
     item.completed = True
     item.save()
     return redirect('index')
 
+#marking atask as undone
 def uncross(request, list_id):
     item = List.objects.get(pk= list_id)
     item.completed = False
     item.save()
     return redirect('index')
 
+#editing task by clicking on the task
 def edit(request, list_id):
     if request.method == "POST":
         item = List.objects.get(pk= list_id)
