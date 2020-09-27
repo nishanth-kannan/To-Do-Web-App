@@ -19,5 +19,5 @@ from todo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todo/', include("todo.urls"))
+    path('todo/', include("todo.urls")) #adding url to access the todo app
 ]
