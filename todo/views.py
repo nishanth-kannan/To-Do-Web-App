@@ -32,7 +32,7 @@ def cross_off(request, list_id):
     item.save()
     return redirect('index')
 
-#marking atask as undone
+#marking a task as undone
 def uncross(request, list_id):
     item = List.objects.get(pk= list_id)
     item.completed = False
@@ -56,7 +56,8 @@ def edit(request, list_id):
         item = List.objects.get(pk= list_id)
         return render(request, 'todo/edit.html', {'item': item})
 
-    
+//random comment
+
 
     
 
