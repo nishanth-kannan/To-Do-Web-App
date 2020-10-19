@@ -56,8 +56,6 @@ def edit(request, list_id):
         item = List.objects.get(pk= list_id)
         return render(request, 'todo/edit.html', {'item': item})
 
-//random comment
-
 
     
 
